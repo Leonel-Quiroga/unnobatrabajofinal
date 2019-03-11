@@ -1,6 +1,7 @@
 package com.example.leonelquiroga.unnobatrabajofinal.dto;
 
 public class UsuarioDTO {
+
     private String usr;
     private String pass;
 
