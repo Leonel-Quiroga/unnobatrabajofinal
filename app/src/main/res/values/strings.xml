@@ -6,4 +6,10 @@
     <string name="prompt_usr">Usuario</string>
     <string name="prompt_pass">Contraseña</string>
     <string name="action_ingresar">Ingresar</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="ir_lista_paciente">Lista de Pacientes Cercanos</string>
+    <string name="GPSAlertDialogTitle">Titulo</string>
+    <string name="GPSAlertDialogMessage">Mensaje</string>
+    <string name="label_cancel">Action</string>
+    <string name="action_settings">Action</string>
 </resources>
