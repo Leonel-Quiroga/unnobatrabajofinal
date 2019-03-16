@@ -12,4 +12,5 @@
     <string name="GPSAlertDialogMessage">Mensaje</string>
     <string name="label_cancel">Action</string>
     <string name="action_settings">Action</string>
+    <string name="titulo_lista_paciente">Pacientes Mas Cercanos</string>
 </resources>
