@@ -4,11 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.leonelquiroga.unnobatrabajofinal.R;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHolderDatos> {
@@ -21,15 +20,32 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
 
-        private TextView nombre;
+        private TextView nombreDistancia, detalle, latLon, domicilio, telefono;
+        private ImageView imagen;
 
         public ViewHolderDatos(View itemView) {
             super(itemView);
-            nombre = (TextView) itemView.findViewById(R.id.idDato);
+            nombreDistancia = (TextView) itemView.findViewById(R.id.itemNombreDistancia);
+            detalle = (TextView) itemView.findViewById(R.id.itemDetalle);
+            latLon = (TextView) itemView.findViewById(R.id.itemLatLon);
+            domicilio = (TextView) itemView.findViewById(R.id.itemDomicilio);
+            telefono = (TextView) itemView.findViewById(R.id.itemTelefono);
+            imagen = (ImageView) itemView.findViewById(R.id.itemImagen);
         }
 
         public void asignarDatos(Paciente paciente) {
-            nombre.setText(paciente.getDescripcion());
+            nombreDistancia.setText(paciente.getDescripcion() + " - Distancia: " + String.format("%.2f", paciente.getDistancia()));
+            detalle.setText("Detalle: " + paciente.getDetalle());
+            latLon.setText("Latitud: " + String.format("%.4f", paciente.getLatitud()) + " Longitud: " + String.format("%.5f", paciente.getLongitud()));
+            domicilio.setText("Domicilio: " + paciente.getDomicilio());
+            telefono.setText("Teléfono: " + paciente.getTelefono());
+            if(paciente.getDescripcion().equals("Caballo Wilfredo")) {
+                imagen.setImageResource(R.drawable.caballero_final);
+            } else if(paciente.getDescripcion().equals("Demaría Angel")) {
+                imagen.setImageResource(R.drawable.fideo_final);
+            } else if (paciente.getDescripcion().equals("Iguazú Gonzalo")) {
+                imagen.setImageResource(R.drawable.pipa_final);
+            }
         }
     }
 

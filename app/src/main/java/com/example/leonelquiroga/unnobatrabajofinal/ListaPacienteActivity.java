@@ -55,6 +55,7 @@ public class ListaPacienteActivity extends AppCompatActivity {
         this.colaRequest = Volley.newRequestQueue(this);
         gson = new Gson();
         listaPaciente = new ArrayList<>();
+        System.out.println("Latitud: " + latitud + " Longitud: " + longitud);
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, URL + latitud + "/" + longitud, null,
                 new Response.Listener<JSONArray>() {
