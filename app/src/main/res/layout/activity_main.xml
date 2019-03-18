@@ -18,7 +18,8 @@
         android:text="@string/cerrar_sesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorAccent"/>
 
     <Button
         android:id="@+id/btnListaPaciente"
@@ -32,6 +33,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCerrarSesion" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCerrarSesion"
+        android:background="@color/colorAccent"/>
 
 </android.support.constraint.ConstraintLayout>

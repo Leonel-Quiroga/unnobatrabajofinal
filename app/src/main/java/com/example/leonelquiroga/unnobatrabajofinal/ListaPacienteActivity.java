@@ -44,6 +44,9 @@ public class ListaPacienteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_paciente);
+
+        getSupportActionBar().hide();
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         listaRecycler = findViewById(R.id.recyclerView);
         listaRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
