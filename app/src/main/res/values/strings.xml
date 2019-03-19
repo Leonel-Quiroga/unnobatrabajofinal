@@ -1,17 +1,16 @@
 <resources>
-    <string name="app_name">unnoba.trabajofinal</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="app_name">Pacientes</string>
+    <string name="title_activity_login">Iniciar Sesión</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <string name="prompt_usr">Usuario</string>
+    <string name="prompt_pass">Contraseña</string>
+    <string name="action_ingresar">Ingresar</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="ir_lista_paciente">Lista de Pacientes Cercanos</string>
+    <string name="GPSAlertDialogTitle">Titulo</string>
+    <string name="GPSAlertDialogMessage">Mensaje</string>
+    <string name="label_cancel">Action</string>
+    <string name="action_settings">Action</string>
+    <string name="titulo_lista_paciente">Pacientes Mas Cercanos</string>
 </resources>

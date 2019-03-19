@@ -1,6 +1,4 @@
-package adapter;
-
-import com.google.gson.Gson;
+package com.example.leonelquiroga.unnobatrabajofinal.adapter;
 
 public class UserAdapter {
     public void JSONtoJava(){
