@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.example.leonelquiroga.unnobatrabajofinal.dao.UsuarioDAOImpl;
 import com.example.leonelquiroga.unnobatrabajofinal.dto.UsuarioDTO;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends Activity implements View.OnClickListener {
 
     public static final int REQUEST_CODE = 10;
     private EditText etUsr;
@@ -31,42 +31,44 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        etUsr = (EditText) findViewById(R.id.idUsr);
+        etPass = (EditText) findViewById(R.id.idPass);
         sharedPreferences = getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE);
+        btnIngresar = (Button) findViewById(R.id.idIngresar);
+        btnIngresar.setOnClickListener(this);
+    }
 
-        if(sharedPreferences.contains(PREF_USR) && sharedPreferences.contains(PREF_PASS)){
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        } else {
-            etUsr = (EditText) findViewById(R.id.idUsr);
-            etPass = (EditText) findViewById(R.id.idPass);
-            btnIngresar = (Button) findViewById(R.id.idIngresar);
-
-            btnIngresar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.idIngresar:
+                if (sharedPreferences.contains(PREF_USR) && sharedPreferences.contains(PREF_PASS)) {
+                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
                     usrDTO = new UsuarioDTO();
                     usrDTO.setUsr(etUsr.getText().toString());
                     usrDTO.setPass(etPass.getText().toString());
-                    if(usrDAOimpl.searchUser(usrDTO)) {
-
-                        sharedPreferences = getSharedPreferences
-                                (PREFERENCE, Context.MODE_PRIVATE);
-
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString(PREF_USR, usrDTO.getUsr());
-                        editor.putString(PREF_PASS, usrDTO.getPass());
-
-                        editor.apply();
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    if (usrDAOimpl.searchUser(usrDTO)) {
+                        guardarPreferencias(usrDTO.getUsr(), usrDTO.getPass());
+                        intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
-
-                    }else {
+                    } else {
                         Toast.makeText(LoginActivity.this, "Usuario Incorrecto!", Toast.LENGTH_SHORT).show();
                     }
                 }
-            });
+                break;
         }
+    }
+
+    private void guardarPreferencias(String usr, String pass) {
+        sharedPreferences = getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(PREF_USR, usr);
+        editor.putString(PREF_PASS, pass);
+        editor.apply();
     }
 }
