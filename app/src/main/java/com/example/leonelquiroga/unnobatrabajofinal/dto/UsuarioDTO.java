@@ -5,6 +5,11 @@ public class UsuarioDTO {
     private String usr;
     private String pass;
 
+    public UsuarioDTO(String usr, String pass) {
+        this.usr = usr;
+        this.pass = pass;
+    }
+
     public String getUsr() {
         return usr;
     }

@@ -12,6 +12,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private Button btnListaPaciente;
     private Button btnCerrarSesion;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         btnListaPaciente = (Button) findViewById(R.id.btnListaPaciente);
         btnCerrarSesion = (Button) findViewById(R.id.btnCerrarSesion);
+        preferences = getSharedPreferences("preferencias", Context.MODE_PRIVATE);
         btnListaPaciente.setOnClickListener(this);
         btnCerrarSesion.setOnClickListener(this);
     }
@@ -32,15 +35,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.btnCerrarSesion:
-                SharedPreferences preferences = getSharedPreferences("preferencias", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
+                editor = preferences.edit();
                 editor.clear();
                 editor.commit();
-                intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                setIntentWithFinish(MainActivity.this, LoginActivity.class);
                 break;
         }
 
+    }
+
+    public void setIntentWithFinish(Context c1, Class c2) {
+        Intent intent = new Intent(c1, c2);
+        startActivity(intent);
+        finish();
     }
 }
